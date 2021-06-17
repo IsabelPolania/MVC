@@ -10,7 +10,7 @@
     <div class="row">
         <div class="form-group col-md-4">
             <label>Nombre</label>
-            <input type="hidden" name="id_ciudad" value="<?php echo $depto['id_dep'];?>">
+            <input type="hidden" name="id_ciudad" value="<?php echo $ciu['id_ciudad'];?>">
             <input type="text" name="nombre_ciu" class="form-control" value="<?php echo $ciu['nombre_ciu'];?>">
             
         </div>
@@ -30,8 +30,6 @@
                         echo "<option value='".$depto['id_dep']."'>".$depto['nombre_dep']."</option>";
 
                        }
-                       
-
                     }
             
                     ?>

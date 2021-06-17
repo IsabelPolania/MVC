@@ -13,7 +13,7 @@
                     Departamento
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="<?php echo getUrl("Departamento","Departamento", "insert"); ?>">Registrar</a>
+                    <a class="dropdown-item" href="<?php echo getUrl("Departamento","Departamento", "getInsert"); ?>">Registrar</a>
                     <a class="dropdown-item" href="<?php echo getUrl("Departamento", "Departamento", "consult");?>">Consultar</a>
                 </div>
             </li>
@@ -22,8 +22,8 @@
                     Ciudad
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="view/ciudad/insert.php">Registrar</a>
-                    <a class="dropdown-item" href="view/ciudad/consult.php">Consultar</a>
+                    <a class="dropdown-item" href="<?php echo getUrl("Ciudad", "Ciudad", "getInsert");?>">Registrar</a>
+                    <a class="dropdown-item" href="<?php echo getUrl("Ciudad", "Ciudad", "consult");?>">Consultar</a>
                 </div>
             </li>
         </ul>

@@ -1,7 +1,8 @@
 <?php
+//El modelo obtiene datos, para obtenerlos debemos acceder por medio de la conexión directa a la BBDD
     include_once '../lib/conf/Connection.php';
 
-    //la clase Master hereda metodos publicos de la clase Connection
+    //la clase Master hereda metodos publicos y protegidos de la clase Connection
     class MasterModel extends Connection{
     
         public function insert($sql){ //me pide un parametro

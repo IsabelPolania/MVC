@@ -12,10 +12,8 @@
             <label>Nombre</label>
             <input type="hidden" name="id_ciudad" value="<?php echo $ciu['id_ciudad'];?>">
             <input type="text" name="nombre_ciu" class="form-control" value="<?php echo $ciu['nombre_ciu'];?>">
-            
-        </div>
-    </div>
-    <div class="col-md-4">
+       </div>
+       <div class="col-md-4">
                 <label>Departamento <label>
                 <select name="id_dep" class="form-control">
                     <option value="">Selecione...</option>
@@ -34,11 +32,12 @@
             
                     ?>
                 </select>
-            </div>
         </div>
+    </div>
     <div class="row">
         <div class="col-md-4">
             <input type="submit" value="Enviar" class="btn btn-success">
+            <a href="<?php echo getUrl("Departamento", "Departamento", "consult"); ?>"><button type="button" class="btn btn-dark">volver</button></a>
         </div>
     </div>
 </form>

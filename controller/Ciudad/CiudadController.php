@@ -6,19 +6,20 @@ Class CiudadController{
     public function getInsert(){
        
         $obj= new CiudadModel();
-        $sql="SELECT id_dep, nombre_dep FROM departamento";
+        $sql="SELECT * FROM departamento";
         $departamento=$obj->consult($sql);
 
         include_once '../view/ciudad/insert.php';
     }
  
     public function postInsert(){
+
         $obj=new CiudadModel();
-        
+
         $nombre_ciu=$_POST['nombre_ciu'];
         $id_dep=$_POST['id_dep'];
 
-        $sql="INSERT INTO ciudad VALUES(null,'$nombre_ciu', $id_dep,null)";
+        $sql="INSERT INTO ciudad VALUES(null,'$nombre_ciu', $id_dep,'')";
 
         $ejecutar=$obj->insert($sql);
 
@@ -27,11 +28,20 @@ Class CiudadController{
         }else{
            echo "Ops, ha ocurrido un error";
         }
+        if(empty($_FILES['ciu_imagen'])){
+            $ciu_imagen=$_FILES['ciu_imagen']['name'];
+            $ruta="img/$ciu_imagen";
+            move_uploaded_file($_FILES['ciu_imagen']['tmp_name'],$ruta);
+            $sql="INSERT INTO ciudad VALUES(NULL, $id_depto,'$nombre_ciu', '$ruta')";
+        }else{
+            $sql="INSERT INTO ciudad VALUES(NULL,$id_depto,'$nombre_ciu', '')";
+        }
+        
     }
     public function consult(){
         $obj= new CiudadModel();
 
-        $sql="SELECT c.id_ciudad, c.nombre_ciu, d.nombre_dep, d.id_dep FROM ciudad c, departamento d WHERE c.id_dep=d.id_dep";
+        $sql="SELECT c.id_ciudad, c.nombre_ciu, d.nombre_dep, d.id_dep, c.ciu_imagen FROM ciudad c, departamento d WHERE c.id_dep=d.id_dep";
          $ciudad=$obj->consult($sql);
          
         include_once '../view/ciudad/consult.php';
@@ -61,6 +71,15 @@ Class CiudadController{
         }else {
            echo "Ops, ha ocurrido un error";
         }
+        if(empty($_POST['ciu_imagen'])){
+            $ciu_imagen=$_FILES['ciu_imagen']['name'];
+            $ruta="img/$ciu_imagen";
+            move_uploaded_file($_FILES['ciu_imagen']['tmp_name'],$ruta);
+            $sql="UPDATE ciudad SET nombre_ciu='$nombre_ciu', ciu_imagen='$ruta' WHERE id_ciudad=$id_ciudad";
+    }else{
+            $sql="UPDATE ciudad SET nombre_ciu='$nombre_ciu' WHERE id_ciudad=$id_ciudad";
+                    
+    }
     }
     public function getDelete(){
         $obj=new CiudadModel();

@@ -14,5 +14,6 @@
                 include_once '../view/partials/carrusel.php';// si no existe, carga el carrusel
             }
     echo "</div>";
+    include_once '../view/partials/modal.php';
     include_once '../view/partials/footer.php'; //en el footer está la funcionalidad del navbar (consulta,insertar...) y está los diseños 
 ?>

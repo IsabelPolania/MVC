@@ -5,7 +5,7 @@
  foreach ($ciudad as $ciu){
  
 ?>
-<form action="<?php echo getUrl("Ciudad","Ciudad","postUpdate");?>" method="post">
+<form action="<?php echo getUrl("Ciudad","Ciudad","postUpdate");?>" method="post" enctype="multipart/form-data">
 
     <div class="row">
         <div class="form-group col-md-4">
@@ -33,11 +33,18 @@
                     ?>
                 </select>
         </div>
+        <div class="col-md-4">
+            <label>Imagen</label>
+            <div id="cambiarImagen">
+                <img class="d-block" id="imagen" src="<?php echo $ciu['ciu_imagen'] ?>" width="150px">
+                <button type="button" id="cambioImagen" class="btn btn-primary mt-3">Cambiar Imagen</button>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-4">
             <input type="submit" value="Enviar" class="btn btn-success">
-            <a href="<?php echo getUrl("Departamento", "Departamento", "consult"); ?>"><button type="button" class="btn btn-dark">volver</button></a>
+            <a href="<?php echo getUrl("Ciudad", "Ciudad", "consult"); ?>"><button type="button" class="btn btn-dark">volver</button></a>
         </div>
     </div>
 </form>

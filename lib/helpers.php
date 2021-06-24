@@ -17,14 +17,17 @@ function dd($var){
     die (print_r($var)); //matamos la ejecución y print será la funcion que me imprimirá los datos en un array
 }
 //función que devueve la url, a dicha función se le pasan 3 datos: modulo, controlador y funcion
-function getUrl($modulo,$controlador,$funcion,$parametros=false){
+function getUrl($modulo,$controlador,$funcion,$parametros=false,$pagina=false){
+    if ($pagina==false){
+        $pagina="index";
+    }
 
     //modulo es la carpeta que está dentro del controlador 
     //controlador es el archivo que está dentro de la carpeta del modulo 
     //funcion = metodo dentro del archivo controlador 
 
     //nota: por medio de la URL ingresaremos a la carpeta=modulo, al archivo=controlador y a la función=metodo, así ingresaremos a absolutamente toda la información y trabajaré el proyecto
-    $url="index.php?modulo=$modulo&controlador=$controlador&funcion=$funcion"; //parametros que le estoy enviando a la funcioncion getUrl
+    $url="$pagina.php?modulo=$modulo&controlador=$controlador&funcion=$funcion"; //parametros que le estoy enviando a la funcioncion getUrl
                
     //modulo es el parametro y es igual a lo que llega por la variable modulo (argumento), asi con cada uno (controlador,funcion)
     if ($parametros!=false){

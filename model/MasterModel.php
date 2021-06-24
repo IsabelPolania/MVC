@@ -21,6 +21,13 @@
             $result=mysqli_query ($this->getConnect(),$sql);
             return $result;
         }
+        public function autoincrement($table,$field){
+           $sql="SELECT MAX($field) FROM $table";
+           $result=$this->consult($sql);
+           $count=mysqli_fetch_row($result);
+
+           return $count[0]+1;
+        }
     }
 
 ?>

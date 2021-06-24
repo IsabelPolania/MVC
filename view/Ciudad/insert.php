@@ -1,7 +1,7 @@
 <div class="jumbotron mt-4">
     <h3 clas="display-4">Registrar Ciudad</h3>
 </div>
-<form action="<?php echo getUrl("Ciudad","Ciudad","postInsert");?>" method="post">
+<form action="<?php echo getUrl("Ciudad","Ciudad","postInsert");?>" method="POST" enctype="multipart/form-data"> 
    <div class="row">
         <div class="col-md-4 form-group">
             <label>Nombre</label>

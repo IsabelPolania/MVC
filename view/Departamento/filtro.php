@@ -1,21 +1,6 @@
-<div class="row mt-4">
-    <div class="col-md-3">                                                 
-        <input type="text" name="filtro" id="filtro" class="form-control" data-url="<?php echo getUrl("Departamento","Departamento","filtro",false,"ajax") ?>">
-    </div>
-</div>
-<table class="table table-hover table-striped mt-5">
- <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
-        </tr>
- </thead>
-    <tbody>
-        <?php
+<?php
         $i=0;
-            foreach ($departamentos as $depto){
+            foreach ($departamento as $depto){
                 $i++;
                 echo "<tr>";
                 echo "<td>".$i."</td>";
@@ -25,5 +10,3 @@
                 echo "</tr>";
             }
         ?>
-    </tbody>
-</table>

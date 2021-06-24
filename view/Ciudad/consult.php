@@ -1,3 +1,13 @@
+<div class="row mt-4">
+    <div class="col-md-3">                                                 
+        <input type="text" name="filtro" id="filtro" class="form-control" data-url="<?php echo getUrl("Ciudad","Ciudad","filtro",false,"ajax") ?>">
+    </div>
+    <div class="col-md-3">
+        <button type="button" id="modal" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-url="<?php echo getUrl("Ciudad","Ciudad","getInsertModal", false, "ajax") ?>">
+        Modal
+        </button>
+    </div>
+</div>
 <table class="table table-hover table-striped mt-5">
  <thead>
         <tr>

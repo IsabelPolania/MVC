@@ -86,6 +86,18 @@ Class DepartamentoController{
            echo "Ops, ha ocurrido un error";
         }
     }
+    public function filtro(){
+
+        $obj = new DepartamentoModel();
+
+        $buscar=$_POST['buscar'];
+
+        $sql="SELECT id_dep , nombre_dep 
+         FROM departamento WHERE id_dep=id_dep AND  nombre_dep LIKE '%$buscar%' ORDER BY id_dep ASC";
+    $departamento=$obj->consult($sql);
+
+    include_once '../view/departamento/filtro.php';
+}
 }
 
 ?>

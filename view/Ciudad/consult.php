@@ -3,8 +3,8 @@
         <input type="text" name="filtro" id="filtro" class="form-control" data-url="<?php echo getUrl("Ciudad","Ciudad","filtro",false,"ajax") ?>">
     </div>
     <div class="col-md-3">
-        <button type="button" id="modal" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-url="<?php echo getUrl("Ciudad","Ciudad","getInsertModal", false, "ajax") ?>">
-        Modal
+        <button type="button" id="modal" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" data-url="<?php echo getUrl("Ciudad","Ciudad","getInsertModal", false, "ajax") ?>">
+        Registrar
         </button>
     </div>
 </div>
@@ -29,10 +29,15 @@
                 echo "<td>".$ciu['nombre_ciu']."</td>"; 
                 echo "<td>".$ciu['nombre_dep']."</td>"; 
                 echo "<td><img src='".$ciu['ciu_imagen']."' width='100px'></td>";            //asignar el valor del array asociativo a la variable, será mostrado en la URL 
-                echo "<td><a href='".getUrl("Ciudad", "Ciudad", "getUpdate",array("id_ciudad"=>$ciu['id_ciudad']))."'><button class='btn btn-primary'>Editar</button></a></td>";
-                echo "<td><a href='".getUrl("Ciudad", "Ciudad", "getDelete",array("id_ciudad"=>$ciu['id_ciudad']))."'><button class='btn btn-danger'>Eliminar</button></td>";
+              //echo "<td><a href='".getUrl("Ciudad", "Ciudad", "getInsertModal",array("id_ciudad"=>$ciu['id_ciudad']))."'><button class='btn btn-primary'>Editar</button></a></td>";
+                echo "<td><button type='button' id='modal' class='btn btn-warning' data-toggle='modal' data-target='#exampleModal' data-url='".getUrl("Ciudad","Ciudad","getupdateModal", array("id_ciudad"=>$ciu['id_ciudad']), "ajax")."'>Editar</button></td>";
+                echo "<td><button type='button' id='modal' class='btn btn-danger' data-toggle='modal' data-target='#exampleModal' data-url='".getUrl("Ciudad","Ciudad","getdeleteModal", array("id_ciudad"=>$ciu['id_ciudad']), "ajax")."'>Eliminar</button></td>";
+                //echo "<td><a href='".getUrl("Ciudad", "Ciudad", "getDelete",array("id_ciudad"=>$ciu['id_ciudad']))."'><button class='btn btn-danger'>Eliminar</button></td>";
                 echo "</tr>";
             }
         ?>
+    </div>
+    
     </tbody>
+   
 </table>

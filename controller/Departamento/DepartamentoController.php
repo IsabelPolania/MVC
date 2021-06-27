@@ -96,8 +96,23 @@ Class DepartamentoController{
          FROM departamento WHERE id_dep=id_dep AND  nombre_dep LIKE '%$buscar%' ORDER BY id_dep ASC";
     $departamento=$obj->consult($sql);
 
-    include_once '../view/departamento/filtro.php';
-}
-}
+     include_once '../view/departamento/filtro.php';
+    }
+    public function getInsertModal(){
+        //$obj=new CiudadModel();
+        //$sql="SELECT * FROM departamento";
+       // $departamentos=$obj->consult($sql);
+     include_once '../view/Departamento/insertModal.php';
+    }
+    public function getUpdateModal(){
+        $obj=new DepartamentoModel();
+        $dep_id=$_GET['id_dep']; //OJITO A ESTO 
+
+        $sql="SELECT * FROM departamento WHERE id_dep=$dep_id";
+        $departamento=$obj->consult($sql);
+
+        include_once '../view/departamento/updateModal.php';
+    }
+} 
 
 ?>

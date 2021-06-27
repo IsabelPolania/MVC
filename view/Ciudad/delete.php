@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-4">
             <input type="submit" value="Eliminar" class="btn btn-danger">
-            <a href="<?php echo getUrl("Departamento", "Departamento", "consult"); ?>"><button type="button" class="btn btn-dark">volver</button></a>
+            <a href="<?php echo getUrl("Ciudad", "Ciudad", "consult"); ?>"><button type="button" class="btn btn-dark">volver</button></a>
         </div>
     </div>
 </form>

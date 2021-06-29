@@ -113,6 +113,18 @@ Class DepartamentoController{
 
         include_once '../view/departamento/updateModal.php';
     }
+    public function getDeleteModal(){
+        $obj=new DepartamentoModel();
+
+        $dep_id=$_GET['id_dep'];
+
+        $sql="SELECT * FROM departamento WHERE id_dep=$dep_id";
+
+       $departamento=$obj->consult($sql);
+
+       include_once '../view/departamento/deleteModal.php';
+
+    }
 } 
 
 ?>

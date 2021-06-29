@@ -142,14 +142,14 @@ Class CiudadController{
         include_once '../view/Ciudad/updateModal.php';
     }
     public function getDeleteModal(){
-        
+
         $obj=new CiudadModel();
 
         $id_ciu=$_GET['id_ciudad'];
 
         $sql="SELECT * FROM ciudad WHERE id_ciudad=$id_ciu";
 
-       $ciudad=$obj->consult($sql);
+        $ciudad=$obj->consult($sql);
 
        include_once '../view/ciudad/deleteModal.php';
     }

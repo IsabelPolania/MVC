@@ -27,5 +27,23 @@
                 </div>
             </li>
         </ul>
+       <?php 
+            if(isset($_SESSION['nombre'])){
+        ?>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php 
+                            echo $_SESSION['nombre'];
+                        ?>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="<?php echo getUrl("acceso", "acceso", "logout");?>">Cerrar sesión</a>
+                    </div>
+                </li>
+            </ul>
+        <?php 
+            }
+        ?> 
     </div>
 </nav>

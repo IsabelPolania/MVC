@@ -8,6 +8,46 @@
         </button>
     </div>
 </div>
+<?php 
+   if (isset($_SESSION['mensaje'])) {
+?>
+  <div class="alert alert-success alert-dismissible fade show mt-4" id="alerta" role="alert">
+        <?=$_SESSION['mensaje'] ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+  </div>
+<?php
+    unset($_SESSION['mensaje']);
+    }
+?>
+<?php 
+   if (isset($_SESSION['mensajes'])) {
+?>
+  <div class="alert alert-info alert-dismissible fade show mt-4" id="alerta" role="alert">
+        <?=$_SESSION['mensajes'] ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+  </div>
+<?php
+    unset($_SESSION['mensajes']);
+    }
+?>
+<?php 
+   if (isset($_SESSION['mensaj'])) {
+?>
+  <div class="alert alert-danger alert-dismissible fade show mt-4" id="alerta" role="alert">
+        <?=$_SESSION['mensaj'] ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+  </div>
+<?php
+    unset($_SESSION['mensaj']);
+    }
+?>
+
 <table class="table table-hover table-striped mt-5">
  <thead>
         <tr>

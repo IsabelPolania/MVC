@@ -11,7 +11,7 @@ $(document).ready(function(){
 
        $(document).on("keyup", "#filtro", function(){
                 var buscar=$(this).val();
-                var url=$(this).attr("data-url");
+                var url=$(this).attr("data-url"); //attr busca el atributo que está llegando
 
                 $.ajax({
                         url:url,
@@ -33,4 +33,21 @@ $(document).ready(function(){
                         }
                 });
         });
+
+        $(document).on("change", "#dep_id", function(){
+            var id=$(this).val();
+            var url=$(this).attr("data-url");
+
+            $.ajax({
+
+                        url:url,
+                        data:"dep_id="+id,
+                        type:"POST",
+                        success:function (datos){
+                        $("#ciu_id").html(datos);
+                        }
+                })
+
+        });
+        $("#alerta").delay(4000).fadeOut();
 });

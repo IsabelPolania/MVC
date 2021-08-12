@@ -9,7 +9,7 @@ Class CiudadController{
         $sql="SELECT * FROM departamento";
         $departamento=$obj->consult($sql);
 
-        include_once '../view/ciudad/insert.php';
+        include_once '../view/ciudad/Select.php';
     }
  
     public function postInsert(){
@@ -26,12 +26,13 @@ Class CiudadController{
 
             $sql="INSERT INTO ciudad VALUES($id,'$nombre_ciu', $id_dep,'$ruta')";
         }else{ 
-            $sql="INSERT INTO ciudad VALUES($id,'$nombre_ciu',$id_dep, '')";
+            $sql="INSERT INTO ciudad VALUES(null,'$nombre_ciu',$id_dep, '')";
         }
         
         $ejecutar=$obj->insert($sql);
         if ($ejecutar){
-            redirect(getUrl("Ciudad","Ciudad","getInsert"));
+            $_SESSION['mensaje']="Se registró la ciudad <b>$nombre_ciu</b> exitosamente";
+            redirect(getUrl("Ciudad","Ciudad","consult"));
         }else{
           echo "Ops, ha ocurrido un error";
         }
@@ -70,7 +71,7 @@ Class CiudadController{
           if (isset($_POST['img_vieja'])){
               $img_vieja=$_POST['img_vieja'];
               unlink("$img_vieja");
-             } 
+            } 
     
           $sql="UPDATE ciudad SET nombre_ciu='$nombre_ciu',id_dep=$id_dep, ciu_imagen='$ruta' WHERE id_ciudad=$id_ciu";
             }else{
@@ -80,6 +81,7 @@ Class CiudadController{
             $ejecutar=$obj->update($sql); //funcion consultar
         
         if ($ejecutar) {
+            $_SESSION['mensajes']="Se actualizó la ciudad <b>$nombre_ciu</b> exitosamente";
             redirect (getUrl("Ciudad", "Ciudad", "consult"));
         }else {
            echo "Ops, ha ocurrido un error";
@@ -103,13 +105,18 @@ Class CiudadController{
         $obj=new CiudadModel();
 
         $id_ciu=$_POST['id_ciudad'];
+        $ciu_imagen=$_POST['ciu_imagen'];
+        $nombre_ciu=$_POST['nombre_ciu'];
 
         $sql="DELETE FROM ciudad WHERE id_ciudad=$id_ciu";
 
         $ejecutar=$obj->delete($sql);
         
         if ($ejecutar) {
-            redirect (getUrl("Ciudad", "Ciudad", "consult"));
+            $_SESSION['mensaj']="Se eliminó la ciudad <b>$nombre_ciu</b> exitosamente";
+            unlink($ciu_imagen);
+           redirect (getUrl("Ciudad", "Ciudad", "consult"));
+            
         }else {
            echo "Ops, ha ocurrido un error";
         }
@@ -147,11 +154,21 @@ Class CiudadController{
 
         $id_ciu=$_GET['id_ciudad'];
 
-        $sql="SELECT * FROM ciudad WHERE id_ciudad=$id_ciu";
+        $sql="SELECT c.id_ciudad, c.nombre_ciu, c.ciu_imagen, d.nombre_dep FROM ciudad AS c, departamento AS d WHERE c.id_dep=d.id_dep AND c.id_ciudad=$id_ciu";
 
         $ciudad=$obj->consult($sql);
 
        include_once '../view/ciudad/deleteModal.php';
+    }
+    public function selectDinamico(){
+        $obj=new CiudadModel();
+        $dep_id=$_POST['dep_id'];
+        $sql="SELECT id_ciu, nombre_ciu FROM ciudad WHERE id_dep=$dep_id";
+        $ciudades=$obj->consult($sql);
+
+        foreach ($ciudades as $ciu){
+            echo "<option value='".$ciu['nombre_ciu']."'>".$ciu['nombre_ciu']."</option>";
+        }
     }
 
 }

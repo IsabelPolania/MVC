@@ -40,7 +40,7 @@ class Connection{
         $this->link=mysqli_connect ($this->server,$this->user,$this->pass,$this->database); //Ella me solicita unos parametros para conectarme, son los que están en parentesis 
 
         if (!$this->link){ //Si no existe la conexión a la BB
-            die (mysqli_error($this->link)); //die mata el proceso PERO me muestra EL ERRROR por el cual no me pude conectar a la BBDD 
+          die (mysqli_error($this->link)); //die mata el proceso PERO me muestra EL ERRROR por el cual no me pude conectar a la BBDD 
         }else{
         //echo "¡Conexión exitosa!";
         }
@@ -53,6 +53,6 @@ class Connection{
  public function close (){ // close es el metodo que acaba la conexión con MYSQL 
 
     mysqli_close($this->link); 
- }
+  }
 
 }

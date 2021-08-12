@@ -1,12 +1,14 @@
 <?php
+
+    session_start();
   //Helpers nos contendrá todas las ayudas, todo lo estructural,
   // todas las funciones que vamos a necesitar 
   // y que mas adelante recurriremos a ellas 
-
- //funcion que me redirecciona, se le envía una dirección (URL) y ella se encarga de llevarme a allá
-function redirect ($url){ 
-echo "<script type='text/javascript'>" 
-    ."window.location.href='$url'" //función que permite redireccionar url con javascript
+  //funcion que me redirecciona, se le envía una dirección (URL) y ella se encarga de llevarme a allá
+  
+  function redirect ($url){ 
+    echo "<script type='text/javascript'>" 
+    ."window.location.href='$url'" //función que permite redirecciona url con javascript
     ."</script>";
 }
 //(imprimir la información) 

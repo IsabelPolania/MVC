@@ -1,6 +1,9 @@
 <?php
 
 include_once '../model/Ciudad/CiudadModel.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 Class CiudadController{
 
     public function getInsert(){
@@ -170,6 +173,42 @@ Class CiudadController{
             echo "<option value='".$ciu['nombre_ciu']."'>".$ciu['nombre_ciu']."</option>";
         }
     }
+    Public function correo(){
 
+        include_once 'PHPMailer/src/Exception.php';
+        include_once 'PHPMailer/src/PHPMailer.php';
+        include_once 'PHPMailer/src/SMTP.php';
+        
+        $mail =new PHPMailer();
+        $mensaje="<p>Este es mi primer envio de <b>CORREO</b></p>";
+        
+        try {
+        //configuración servidor de correo
+        $mail->SMTPDebug=2;
+        $mail->isSMTP();
+        $mail->Host="smtp.gmail.com";
+        $mail->SMTPAuth=true;
+        $mail->Username="dipolania4@misena.edu.co";
+        $mail->Password="1144075854";
+        $mail->SMTPSecure="TLS";
+        $mail->Port=587;
+        
+        //información del destinatario y remitente
+        $mail->setFrom("dipolania4@misena.edu.co","Correo SENA"); //remitente
+        $mail->addAddress("meowisaa@gmail.com","Isabel Polania"); //destinatario
+        
+        //contenido del correo 
+        $mail->isHTML(true);
+        $mail->Subject ="Mi primer correo con PHPMailer"; //asunto del correo
+        $mail->Body=$mensaje;
+        
+        //enviar el correo
+        $mail->send();
+        
+        }catch (Exception $e){
+        echo "No se puedo enviar correo";
+        echo "ERROR:".$mail->ErrorInfo;
+        }
+    }
 }
 ?>

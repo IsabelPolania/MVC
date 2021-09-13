@@ -7,6 +7,13 @@
         Registrar
         </button>
     </div>
+    <div class="col-md-2">
+        <a target="_blank" href="<?php echo getUrl ("Ciudad","Ciudad","correo",false,"Ajax")?>">
+        <button type="button" class="btn btn-primary">
+           Correo
+        </button>
+        </a>
+    </div>
 </div>
 <?php 
    if (isset($_SESSION['mensaje'])) {
